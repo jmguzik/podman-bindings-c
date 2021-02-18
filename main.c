@@ -51,11 +51,12 @@ int main() {
     handleError(error, 1, id.r0);
 
     struct inspectContainer_return status = inspectContainer(id.r0);
-    handleError(error, 3, id.r0, status.r0, status.r1);
-    printf("Status of the container with imgName: %s is: %s\n", status.r0, status.r1);
+    error = status.r2;
+    printf("Ret code: %d. Status of the container with imgName: %s is: %s\n", error, status.r0, status.r1);
 
     error = stopContainer(id.r0);
-    handleError(error, 1, id.r0);
+    printf("Stop container reported status: %d\n", error);
+    handleError(error, 3, id.r0, status.r0, status.r1);
 
     //free dynamically allocated data
     free(id.r0);
