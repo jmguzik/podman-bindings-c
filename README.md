@@ -25,12 +25,12 @@ There is example main.c which demonstrates the usage of above operations.
 
 2. Ensure podman.socket is activated
 ```bash
-systemctl --user start podman.socket
+$ systemctl --user start podman.socket
 ```
 
 3. Start service (here using podman command)
 ```bash
-podman system service -t 0
+$ podman system service -t 0
 ```
 
 4. Build go wrapper library (this step will generate C header file as well)
@@ -60,3 +60,4 @@ Status of the container with imgName: registry.fedoraproject.org/fedora-minimal:
 ### Additional info
 1. Go wrapper library is based on demo application: https://github.com/containers/Demos/tree/master/podman_go_bindings
 2. For go troubleshooting refer to: https://podman.io/blogs/2020/08/10/podman-go-bindings.html
+3. Validate your library using valgrind and/or memory/address sanitizers

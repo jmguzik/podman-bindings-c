@@ -51,7 +51,7 @@ int main() {
     handleError(error, 1, id.r0);
 
     struct inspectContainer_return status = inspectContainer(id.r0);
-    handleError(error, 1, id.r0, status.r0, status.r1);
+    handleError(error, 3, id.r0, status.r0, status.r1);
     printf("Status of the container with imgName: %s is: %s\n", status.r0, status.r1);
 
     error = stopContainer(id.r0);
