@@ -10,40 +10,40 @@ needed around original Go bindings.
 There's a single Go file, which uses the Podman Go bindings to provide
 interface to execute following steps from C application:
 
-0. Pull Image
-1. List Images
-2. Start Container
-3. List Containers
-4. Inspect Container
-5. Stop Container
+1. Pull Image
+2. List Images
+3. Start Container
+4. List Containers
+5. Inspect Container
+6. Stop Container
 
 There is example main.c which demonstrates the usage of above operations.
 
 ### Running the application
 
-0. Clone the repo and enter to the directory.
+1. Clone the repo and enter to the directory.
 
-1. Ensure podman.socket is activated
+2. Ensure podman.socket is activated
 ```bash
 systemctl --user start podman.socket
 ```
 
-2. Start service (here using podman command)
+3. Start service (here using podman command)
 ```bash
 podman system service -t 0
 ```
 
-2. Build go wrapper library (this step will generate C header file as well)
+4. Build go wrapper library (this step will generate C header file as well)
 ```bash
 $ go build -buildmode=c-shared -o libpodc.so libpodc.go
 ```
 
-3. Build example C application
+5. Build example C application
 ```bash
 $ gcc -O2 -L. -Wl,-rpath=. -Wall -o main main.c -lpodc
 ```
 
-4. Run it
+6. Run it
 ```bash
 $ ./main
 Trying to pull registry.fedoraproject.org/fedora-minimal:latest...
@@ -58,5 +58,5 @@ INFO[0002] Going to start container "a6171bb2da55377d58e0bd05e1469a9a1f4ab83e406
 Status of the container with imgName: registry.fedoraproject.org/fedora-minimal:latest is: running
 ```
 ### Additional info
-0. Go wrapper library is based on demo application: https://github.com/containers/Demos/tree/master/podman_go_bindings
-1. For go troubleshooting refer to: https://podman.io/blogs/2020/08/10/podman-go-bindings.html
+1. Go wrapper library is based on demo application: https://github.com/containers/Demos/tree/master/podman_go_bindings
+2. For go troubleshooting refer to: https://podman.io/blogs/2020/08/10/podman-go-bindings.html
