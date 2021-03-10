@@ -60,4 +60,3 @@ Status of the container with imgName: registry.fedoraproject.org/fedora-minimal:
 ### Additional info
 1. Go wrapper library is based on demo application: https://github.com/containers/Demos/tree/master/podman_go_bindings
 2. For go troubleshooting refer to: https://podman.io/blogs/2020/08/10/podman-go-bindings.html
-3. Validate your library using valgrind and/or memory/address sanitizers
